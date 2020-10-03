@@ -1,0 +1,10 @@
+TODO:
+- DONE Create test class
+ 
+- Change ArrayList<String> in Course to ArrayList<Student> once the student class is created 
+- StudentController, AdminController, AuthController
+
+NEXT
+- Courses:
+	- Course class
+	- CourseList
