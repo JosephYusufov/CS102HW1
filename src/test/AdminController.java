@@ -1,5 +1,5 @@
 package test;
 
-public class AdminController {
-
+public class AdminController  {
+	
 }
