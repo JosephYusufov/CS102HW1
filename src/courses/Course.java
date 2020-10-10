@@ -3,46 +3,48 @@
 package courses;
 
 import java.util.ArrayList; // import the ArrayList class
+import java.util.UUID;
+import users.*;
 
 public class Course {
-	
+
 	// Fields
-	private int id;
+	private String id;
 	private String name;
 	private String instructor;
 	private String location;
 	private int sectionNumber;
 	private int maxStudents;
 	private boolean isFull;
-	private ArrayList<String> registeredStudents;
+	private ArrayList<Student> registeredStudents;
 
 	// Constructors
 	public Course() {
-		this.id = 0;
+		this.id = UUID.randomUUID().toString();
 		this.name = "Default";
 		this.instructor = "Mr. Smith";
 		this.location = "New York City";
-		this.sectionNumber= 0;
-		this.maxStudents = 10;	
+		this.sectionNumber = 0;
+		this.maxStudents = 10;
 		this.isFull = false;
-		this.registeredStudents = new ArrayList<String>();
+		this.registeredStudents = new ArrayList<Student>();
 	}
-	
-	public Course( int id, String name, String instructor, String location, int sectionNumber, int maxStudents ) {
-		this.id = id;
+
+	public Course(String name, String instructor, String location, int sectionNumber, int maxStudents) {
+		this.id = UUID.randomUUID().toString();
 		this.name = name;
 		this.instructor = instructor;
 		this.location = location;
-		this.sectionNumber= sectionNumber;
+		this.sectionNumber = sectionNumber;
 		this.maxStudents = maxStudents;
-		this.isFull = false;		
-		this.registeredStudents = new ArrayList<String>();
+		this.isFull = false;
+		this.registeredStudents = new ArrayList<Student>();
 	}
 
 	// String Representation
 	public String toString() {
 		String toReturn = "";
-		toReturn += String.format("%32s | %-32d\n", "ID", this.id);
+		toReturn += String.format("%32s | %-32s\n", "ID", this.id);
 		toReturn += String.format("%32s | %-32s\n", "Course Name", this.name);
 		toReturn += String.format("%32s | %-32s\n", "Instructor", this.instructor);
 		toReturn += String.format("%32s | %-32s\n", "Location", this.location);
@@ -50,58 +52,58 @@ public class Course {
 		toReturn += String.format("%32s | %-32s\n", "Maximum Capacity", this.maxStudents);
 		toReturn += String.format("%32s | %-32b\n", "Is Full?", this.isFull);
 		toReturn += String.format("%32s | %-32s\n", "Registered Students", "");
-		
+
 		// populate toReturn with student names
-		for(int i = 0; i < registeredStudents.size(); i++) {
-			toReturn += String.format("%32s | %-32s\n", "", registeredStudents.get(i));
+		for (int i = 0; i < registeredStudents.size(); i++) {
+			toReturn += String.format("%32s | %-32s\n", "", registeredStudents.get(i).getName());
 		}
 		return toReturn;
 	}
-	
+
 	// Getter Methods
-	public int getId() {	
+	public String getId() {
 		return id;
 	}
 
-	public String getName() {		
+	public String getName() {
 		return name;
-	} 
+	}
 
-	public String getInstructor() {	
+	public String getInstructor() {
 		return instructor;
-	} 
+	}
 
-	public String getLocation() {	
+	public String getLocation() {
 		return location;
-	} 
+	}
 
-	public int getSectionNumber() {		
+	public int getSectionNumber() {
 		return sectionNumber;
-	} 
+	}
 
-	public int getMaxStudents() {	
+	public int getMaxStudents() {
 		return maxStudents;
-	} 
+	}
 
-	public int getNumRegisteredStudents() {	
+	public int getNumRegisteredStudents() {
 		return registeredStudents.size();
-	} 
-	
+	}
+
 	public int getOpenSeats() {
 		return (maxStudents - registeredStudents.size());
 	}
-	
+
 	public boolean isFull() {
-		if (registeredStudents.size() >= maxStudents ) {
+		if (registeredStudents.size() >= maxStudents) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public ArrayList<String> getRegisteredStudents() {		
+	public ArrayList<Student> getRegisteredStudents() {
 		return registeredStudents;
-	} 
+	}
 
 	// Setter Methods
 //	public int setId( int newId ) {	
@@ -116,42 +118,48 @@ public class Course {
 //		return oldName;
 //	} 
 
-	public String setInstructor( String newInstructor ) {
+	public String setInstructor(String newInstructor) {
 		String oldInstructor = instructor;
 		instructor = newInstructor;
 		return oldInstructor;
-	} 
+	}
 
-	public String setLocation(String newLocation ) {
+	public String setLocation(String newLocation) {
 		String oldLocation = location;
 		location = newLocation;
-		return oldLocation;		
-	} 
+		return oldLocation;
+	}
 
-	public int setSectionNumber( int newSectionNumber ) {
+	public int setSectionNumber(int newSectionNumber) {
 		int oldSectionNumber = sectionNumber;
 		sectionNumber = newSectionNumber;
-		return oldSectionNumber;				
-	} 
+		return oldSectionNumber;
+	}
 
-	public int setMaxStudents( int newMaxStudents ) {	
+	public int setMaxStudents(int newMaxStudents) {
 		int oldMaxStudents = maxStudents;
 		maxStudents = newMaxStudents;
 		return oldMaxStudents;
-	} 
-	
+	}
+
+	public String setName(String newName) {
+		String oldName = name;
+		name = newName;
+		return oldName;
+	}
+
 	// returns 1 on success, 0 on failure
-	public int addStudent ( String studentName ) {
-		if ( registeredStudents.size() <= maxStudents ) {
-			registeredStudents.add( studentName );
+	public int addStudent(Student student) {
+		if (registeredStudents.size() <= maxStudents) {
+			registeredStudents.add(student);
 			return 1;
 		} else {
 			return 0;
 		}
 	}
-	
+
 	// returns 1 on success, 0 on failure
-	public int removeStudent ( String studentName ) {
+	public int removeStudent(String studentName) {
 //		try {
 //			registeredStudents.remove( indexToRemove );
 //			return 1;
@@ -159,13 +167,13 @@ public class Course {
 //			System.out.println(e);
 //			return 0;
 //		}
-		for(int i = 0; i < registeredStudents.size(); i++ ) {
-			if ( registeredStudents.get(i) == studentName ) {
+		for (int i = 0; i < registeredStudents.size(); i++) {
+			if (registeredStudents.get(i).getName().equals(studentName)) {
 				registeredStudents.remove(i);
 				return 1;
 			}
 		}
 		return 0;
 	}
-	
+
 }

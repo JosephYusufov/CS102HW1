@@ -5,6 +5,7 @@ public abstract class User {
 	protected String password;
 	protected String firstName;
 	protected String lastName;
+	protected String id;
 	
 	public int authenticate ( String password ) {
 		if (password == this.password) {

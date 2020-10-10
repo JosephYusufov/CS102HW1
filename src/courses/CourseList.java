@@ -1,7 +1,7 @@
 package courses;
 import java.util.ArrayList; 
 
-public class CourseList implements CourseListInterface {
+public class CourseList {
 	private ArrayList<Course> courseList;
 	
 	public CourseList(){
@@ -30,11 +30,11 @@ public class CourseList implements CourseListInterface {
 	@Override
 	public String toString() {
 		String toReturn = "";
-		toReturn += String.format("%32s | %32s | %32s\n", "Course Name", "Instructor", "Open Seats");
-
+		toReturn += String.format("%-36s | %-32s | %-20s | %-10s\n", "ID", "Course Name", "Instructor", "Open Seats");
+		toReturn += "-".repeat(107) + "\n";
 		// populate toReturn with student names
 		for(int i = 0; i < courseList.size(); i++) {
-			toReturn += String.format("%32s | %32s | %32s \n", courseList.get(i).getName(), courseList.get(i).getInstructor(), courseList.get(i).getOpenSeats());
+			toReturn += String.format("%-36s | %-32s | %-20s | %-10s \n", courseList.get(i).getId(), courseList.get(i).getName(), courseList.get(i).getInstructor(), courseList.get(i).getOpenSeats());
 		}
 		return toReturn;
 	} 

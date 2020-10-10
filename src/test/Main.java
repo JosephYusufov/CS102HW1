@@ -1,27 +1,27 @@
 package test;
-import courses.Course;
-import java.util.Scanner;  // Import the Scanner class
+
+import courses.*;
+import users.*;
 
 public class Main {
-	public static void main( String[] args ) {
+	public static void main(String[] args) {
+//		CourseList courseList = new CourseList();
+//		Course math = new Course();
+//		math.setInstructor("John Doe");
+//		math.setSectionNumber(3);
+//		math.setName("Mathematics 101");
+//		Student joshDoe = new Student("Josh", "Doe", "jdoe", "Josh123");
+//		joshDoe.register(math);
+//		math.addStudent(joshDoe);
+//		courseList.addCourse(math);
+//		System.out.println(math);
+//		math.removeStudent("Josh Doe");
+//		System.out.println(math);
+
+		StudentController controller = new StudentController();
+		Student joshDoe = new Student("Josh", "Doe", "jdoe", "Josh123");
 		
-//		Course sampleCourse = new Course();
-//		sampleCourse.addStudent("Yuriy Gagarin");
-//		sampleCourse.addStudent("John Smith");
-//		sampleCourse.addStudent("Jane Doe");		
-//		System.out.println( sampleCourse );
-//		sampleCourse.removeStudent("Jane Doe");
-//		System.out.println( sampleCourse );
-//
-		
-		
-		StudentController studentController = new StudentController();
-		studentController.start();
-		
-		
-		
-		
-		
+		controller.start(joshDoe);
 ////		Code to keep the interactive shell going
 //		Scanner scanner = new Scanner(System.in);
 //		boolean active = true;
