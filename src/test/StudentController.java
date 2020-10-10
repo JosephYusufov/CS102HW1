@@ -42,7 +42,9 @@ public class StudentController {
 						System.out.print("> ");
 						String idToWithdraw = scanner.next();
 						System.out.println("Success, thank you. Press enter to return to your dashboard.");
-						scanner.nextLine();
+						if(scanner.nextLine().equals("")) {
+							scanner.nextLine();
+						}
 						break;
 					default:
 						System.out.println("Bye!");
