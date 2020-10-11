@@ -3,11 +3,15 @@
 package courses;
 
 import java.util.ArrayList; // import the ArrayList class
-import java.util.UUID;
+
 import users.*;
 
-public class Course {
+public class Course implements Comparable<Course>, java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1234L;
 	// Fields
 	private String id;
 	private String name;
@@ -105,19 +109,6 @@ public class Course {
 		return registeredStudents;
 	}
 
-	// Setter Methods
-//	public int setId( int newId ) {	
-//		int oldId = id;
-//		id = newId;
-//		return oldId;
-//	}
-//
-//	public String setName( String newName ) {
-//		String oldName = name;
-//		name = newName;
-//		return oldName;
-//	} 
-
 	public String setInstructor(String newInstructor) {
 		String oldInstructor = instructor;
 		instructor = newInstructor;
@@ -160,13 +151,6 @@ public class Course {
 
 	// returns 1 on success, 0 on failure
 	public int removeStudent(String studentName) {
-//		try {
-//			registeredStudents.remove( indexToRemove );
-//			return 1;
-//		} catch (Exception e) {
-//			System.out.println(e);
-//			return 0;
-//		}
 		for (int i = 0; i < registeredStudents.size(); i++) {
 			if (registeredStudents.get(i).getName().equals(studentName)) {
 				registeredStudents.remove(i);
@@ -175,5 +159,8 @@ public class Course {
 		}
 		return 0;
 	}
-
+	
+	public int compareTo(Course courseToCompare) {
+		return courseToCompare.getNumRegisteredStudents() - this.registeredStudents.size();
+	}
 }

@@ -5,12 +5,18 @@ import java.util.UUID;
 
 import courses.*;
 
-public class Student extends User {
+public class Student extends User implements java.io.Serializable{
 
+	private static final long serialVersionUID = 123L;
 	// Fields
 	private final static int maxCourses = 5;
 	private CourseList registeredCourses;
-
+	private String firstName;
+	private String lastName;
+	private String username;
+	private String password;
+	private String id;
+	
 	// Constructors
 	public Student() {
 		this.id = UUID.randomUUID().toString();
@@ -41,6 +47,10 @@ public class Student extends User {
 
 	public String getUsername() {
 		return username;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {

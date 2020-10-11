@@ -20,23 +20,12 @@ public class StudentController {
 		Scanner scanner = new Scanner(System.in);
 		boolean active = true;
 
-//		Course math = new Course();
-//		Course science = new Course();
-//		science.setInstructor("Aneese Bari");
-//
-//		CourseList courseList = new CourseList();
-//
-//		courseList.addCourse(math);
-//		courseList.addCourse(science);
-
 		while (active) {
 			System.out.println("Welcome " + user.getName() + " !\n");
-//			System.out.println("-".repeat(20) + "\n");
 			System.out.println("-".repeat(119));
 			System.out.println(" ".repeat(47) + "Your Registered Courses" + " ".repeat(47));
 			System.out.println("-".repeat(119));
 			System.out.println(user.getRegisteredCourses());
-//			System.out.println("--------------------------------------------");
 			System.out.println("\n(0)Exit | (1)See All Courses | (2)See Available Courses | (3)Withdraw");
 			System.out.print("> ");
 
@@ -79,8 +68,6 @@ public class StudentController {
 							System.out.print("\nEnter the name of the course you'd like to enroll in > ");
 							scanner.useDelimiter(Pattern.compile("[\\r\\n]+"));
 							String courseNameToRegister = scanner.next();
-//							scanner.useDelimiter(" ");
-//							scanner.next();
 							System.out.print("\nEnter the section you'd like to enroll in > ");
 							int courseSectionToRegister = scanner.nextInt();
 							

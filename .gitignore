@@ -1,3 +1,6 @@
+# Serialized data files
+*.ser
+
 # Compiled class file
 *.class
 
