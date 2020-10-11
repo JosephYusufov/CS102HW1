@@ -1,6 +1,8 @@
 package test;
 
 import java.util.Scanner; // Import the Scanner class
+import java.util.regex.Pattern;
+
 import courses.*;
 import users.*;
 
@@ -75,7 +77,7 @@ public class StudentController {
 							break;
 						case 2:
 							System.out.print("\nEnter the name of the course you'd like to enroll in > ");
-							scanner.useDelimiter("\n");
+							scanner.useDelimiter(Pattern.compile("[\\r\\n]+"));
 							String courseNameToRegister = scanner.next();
 //							scanner.useDelimiter(" ");
 //							scanner.next();
@@ -83,7 +85,7 @@ public class StudentController {
 							int courseSectionToRegister = scanner.nextInt();
 							
 							System.out.print("\nEnter your name (First Last) to confirm > ");
-							scanner.useDelimiter("\n");
+							scanner.useDelimiter(Pattern.compile("[\\r\\n]+"));
 							String studentNameVerification = scanner.next();
 							
 							boolean result = registerInCourse(studentNameVerification, courseSectionToRegister, courseNameToRegister, user);
@@ -107,10 +109,10 @@ public class StudentController {
 						break;						
 					case 3:
 						System.out.print("\nEnter the name of the course that you'd like to withdraw from > ");
-						scanner.useDelimiter("\n");
+						scanner.useDelimiter(Pattern.compile("[\\r\\n]+"));
 						String courseNameToWithdraw = scanner.next();
 						System.out.print("\nEnter your name (First Last) to confirm > ");
-						scanner.useDelimiter("\n");
+						scanner.useDelimiter(Pattern.compile("[\\r\\n]+"));
 						String nameVerificationToWithdraw = scanner.next();
 
 						boolean resultWithdraw = withdrawFromCourse(nameVerificationToWithdraw, courseNameToWithdraw, user);
