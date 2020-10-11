@@ -1,15 +1,16 @@
 package users;
+
 import java.util.ArrayList; // import the ArrayList class
 import java.util.UUID;
 
-import courses.Course;
+import courses.*;
 
 public class Student extends User {
-	
+
 	// Fields
 	private final static int maxCourses = 5;
-	private ArrayList<Course> registeredCourses;
-	
+	private CourseList registeredCourses;
+
 	// Constructors
 	public Student() {
 		this.id = UUID.randomUUID().toString();
@@ -17,48 +18,61 @@ public class Student extends User {
 		this.lastName = "Doe";
 		this.username = "username";
 		this.password = "password";
-		this.registeredCourses = new ArrayList<Course>();
+		this.registeredCourses = new CourseList();
 	}
-	
-	public Student( String firstName, String lastName, String username, String password ) {
+
+	public Student(String firstName, String lastName, String username, String password) {
 		this.id = UUID.randomUUID().toString();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-		this.registeredCourses = new ArrayList<Course>();
+		this.registeredCourses = new CourseList();
 	}
 
 	// Methods
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
 	}
-	
-	public String getUserName() {
+
+	public String getUsername() {
 		return username;
 	}
-	
+
 	public String getName() {
-		return ( firstName + " " + lastName );
+		return (firstName + " " + lastName);
 	}
-	
-	public void viewRegisteredCourses() {
-		System.out.println("Course");
+
+	public CourseList getRegisteredCourses() {
+		return registeredCourses;
 	}
-			
+
 	public boolean register(Course courseToRegister) {
-		if(!courseToRegister.isFull()) {
-			registeredCourses.add(courseToRegister);
+		if (!courseToRegister.isFull()) {
+			registeredCourses.addCourse(courseToRegister);
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
+	public boolean withdraw(String courseName) {
+		for (int i = 0; i < registeredCourses.size(); i++) {
+			Course currentCourse = registeredCourses.get(i);
+			
+			if(currentCourse.getName().equals(courseName)) {
+				registeredCourses.removeCourse(i);
+				currentCourse.removeStudent(this.getName());
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public String toString() {
 		String toReturn = "";
 		toReturn += String.format("%32s | %-32s\n", "ID", this.id);
@@ -70,5 +84,13 @@ public class Student extends User {
 			toReturn += String.format("%32s | %-32s\n", "", registeredCourses.get(i).getName());
 		}
 		return toReturn;
+	}
+
+	public boolean authenticate(String username, String password) {
+		if ((username.equals(this.username)) && (password.equals(this.password))) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

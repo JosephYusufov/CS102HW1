@@ -27,14 +27,31 @@ public class CourseList {
 		}
 	}
 	
+	public int size() {
+		return courseList.size();
+	}
+	
+	public Course get(int i) {
+		return courseList.get(i);
+	}
+	
+	public CourseList getAvailableCourses() {
+		CourseList availableCourses = new CourseList();
+		for(int i = 0; i < courseList.size(); i++) {
+			if(!courseList.get(i).isFull()) {
+				availableCourses.addCourse(courseList.get(i));
+			}
+		}
+		return availableCourses;
+	}
 	@Override
 	public String toString() {
 		String toReturn = "";
-		toReturn += String.format("%-36s | %-32s | %-20s | %-10s\n", "ID", "Course Name", "Instructor", "Open Seats");
-		toReturn += "-".repeat(107) + "\n";
+		toReturn += String.format("%-12s | %-45s | %-15s | %-25s | %-10s\n", "ID", "Course Name", "Section Number", "Instructor", "Open Seats");
+		toReturn += "-".repeat(119) + "\n";
 		// populate toReturn with student names
 		for(int i = 0; i < courseList.size(); i++) {
-			toReturn += String.format("%-36s | %-32s | %-20s | %-10s \n", courseList.get(i).getId(), courseList.get(i).getName(), courseList.get(i).getInstructor(), courseList.get(i).getOpenSeats());
+			toReturn += String.format("%-12s | %-45s | %-15d | %-25s | %-10s \n", courseList.get(i).getId(), courseList.get(i).getName(), courseList.get(i).getSectionNumber(), courseList.get(i).getInstructor(), courseList.get(i).getOpenSeats());
 		}
 		return toReturn;
 	} 

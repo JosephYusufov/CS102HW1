@@ -20,7 +20,7 @@ public class Course {
 
 	// Constructors
 	public Course() {
-		this.id = UUID.randomUUID().toString();
+		this.id = "CS102";
 		this.name = "Default";
 		this.instructor = "Mr. Smith";
 		this.location = "New York City";
@@ -30,8 +30,8 @@ public class Course {
 		this.registeredStudents = new ArrayList<Student>();
 	}
 
-	public Course(String name, String instructor, String location, int sectionNumber, int maxStudents) {
-		this.id = UUID.randomUUID().toString();
+	public Course(String id, String name, String instructor, String location, int sectionNumber, int maxStudents) {
+		this.id = id;
 		this.name = name;
 		this.instructor = instructor;
 		this.location = location;

@@ -18,10 +18,23 @@ public class Main {
 //		math.removeStudent("Josh Doe");
 //		System.out.println(math);
 
-		StudentController controller = new StudentController();
-		Student joshDoe = new Student("Josh", "Doe", "jdoe", "Josh123");
+//		StudentController controller = new StudentController();
+//		Student joshDoe = new Student("Josh", "Doe", "jdoe", "Josh123");
+//		Course science = new Course();
+//		science.setInstructor("Joseph Lemelin");
+//		science.setName("Mechanical Minds");
+//		joshDoe.register(science);
+//		science.addStudent(joshDoe);
+//		controller.start(joshDoe);
 		
-		controller.start(joshDoe);
+		AuthController controller = new AuthController();
+		controller.start();
+		
+		
+		
+		
+		
+		
 ////		Code to keep the interactive shell going
 //		Scanner scanner = new Scanner(System.in);
 //		boolean active = true;
