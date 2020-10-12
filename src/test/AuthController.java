@@ -42,9 +42,9 @@ public class AuthController {
 			Course science = new Course("SCI-UA", "Applied Sciences", "James Appleseed", "Brooklyn", 1, 10);
 			courseDirectory.addCourse(science);
 
-			Student s1 = new Student("Joseph", "Yusufov", "jyusufov", "password");
-			Student s2 = new Student("Mike", "Pence", "mpence", "123123123");
-			Student s3 = new Student("Kamala", "Harris", "kharris", "veep");
+			Student s1 = new Student("Steve", "Irwin", "sirwin", "password");
+			Student s2 = new Student("Joan", "Jett", "jjett", "123123123");
+			Student s3 = new Student("Richard", "Nixon", "thenix", "watergate");
 			Student s4 = new Student("Elizabeth", "Buckingham", "ebuckingham", "crumpets");
 
 			studentDirectory.add(s1);
@@ -64,7 +64,7 @@ public class AuthController {
 		}
 
 		while (active) {
-			System.out.print("Welcome! Please enter your usename > ");
+			System.out.print("Welcome to YoboCRS! Please enter your usename > ");
 			String username = scanner.next();
 			System.out.print("Password > ");
 			String password = scanner.next();

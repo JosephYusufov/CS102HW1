@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import courses.*;
 
-public class Student extends User implements java.io.Serializable{
+public class Student extends User implements java.io.Serializable, StudentInterface{
 
 	private static final long serialVersionUID = 123L;
 	// Fields
